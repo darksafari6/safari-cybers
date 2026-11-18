@@ -2,6 +2,7 @@ export interface Task {
   id: number;
   title: string;
   content: string;
+  reading?: string;
 }
 
 export interface Room {
@@ -14,6 +15,7 @@ export interface Room {
   users: number;
   tags: string[];
   tasks: Task[];
+  video?: { title: string; url: string; guide?: string };
 }
 
 export interface LearningPath {
