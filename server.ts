@@ -4,7 +4,7 @@ import path from "path";
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT ?? 3000);
 
   // API routes
   app.get("/api/status", (req, res) => {
@@ -16,8 +16,10 @@ async function startServer() {
     });
   });
 
+  app.use("/api", (_req, res) => res.status(404).json({ error: "Not found" }));
+
   // Vite middleware for development
-  if (process.env.NODE_ENV !== "production") {
+  if (process.env.NODE_ENV !== "production" && !process.argv.includes("--production")) {
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",

@@ -1,6 +1,8 @@
+import { engineeringPath, engineeringRooms } from './courses';
 import { Module, Room, LearningPath } from './types';
 
 export const PATHS: LearningPath[] = [
+  engineeringPath,
   {
     id: 1,
     title: 'Junior Penetration Tester',
@@ -211,7 +213,8 @@ Any authenticated domain user can request a Kerberos ticket for any service acco
         `
       }
     ]
-  }
+  },
+  ...engineeringRooms,
 ];
 
 export const MODULES: Module[] = []; // Keeping empty to avoid breaking old code if imported, but we will use ROOMS now.
